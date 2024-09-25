@@ -1,6 +1,6 @@
 namespace Structural;
 
-public class Colleague1(Mediator mediator) : Colleague(mediator)
+public class Colleague1 : Colleague
 {
   public override void HandleNotification(string message)
   {

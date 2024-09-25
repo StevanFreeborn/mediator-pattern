@@ -2,17 +2,19 @@ namespace Structural;
 
 public class ConcreteMediator : Mediator
 {
-  public Colleague1? Colleague1 { get; set; }
-  public Colleague2? Colleague2 { get; set; }
+  private readonly List<Colleague> _colleagues = [];
+
+  public void Register(Colleague colleague)
+  {
+    colleague.SetMediator(this);
+    _colleagues.Add(colleague);
+  }
 
   public override void Send(string message, Colleague colleague)
   {
-    if (colleague.Equals(Colleague1))
-    {
-      Colleague2?.HandleNotification(message);
-      return;
-    }
-    
-    Colleague1?.HandleNotification(message);
+    _colleagues
+      .Where(c => c != colleague)
+      .ToList()
+      .ForEach(c => c.HandleNotification(message));
   }
 }
