@@ -44,7 +44,7 @@ public class Marker : Label
 
   private void OnMouseDown(object? sender, MouseEventArgs e)
   {
-    if (e.Button is not MouseButtons.Left) 
+    if (e.Button is not MouseButtons.Left)
     {
       return;
     }
@@ -68,7 +68,7 @@ public class Marker : Label
     var distance = Math.Sqrt(
       Math.Pow(Location.X - location.X, 2) + Math.Pow(Location.Y - location.Y, 2)
     );
-    
+
     if (distance < 100 && BackColor != Color.Red)
     {
       BackColor = Color.Red;
